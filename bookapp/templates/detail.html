@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="header">
+  <h1>{{task.title}}</h1>
+</div>
+
+<div class="detail">
+  <p>{{task.date}}</p>
+  <p>{{task.description}}</p>
+
+  {% if task.bookimage %} 
+  <p><img src="{{ task.bookimage.url }}" width="550"></p>
+  {% endif %}
+
+  <a href="{% url 'list' %}" class="backbtn" style="margin-top: 32px;">戻る</a>
+</div>
+{% endblock content %}

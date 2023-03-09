@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="listHeader header">
+  <div>
+    <h1>Book List</h1>
+  </div>
+  <div class="user">
+    <p>アカウント</p>
+    <p><i class="bi bi-person-circle" style="font-size: 32px;"></i></p>
+    <p>{{request.user}}</p>
+  </div>
+</div>
+
+<a href="{% url 'create' %}" class="btn">本を追加</a>
+
+<form action="" method="GET" style="margin-top: 32px;">
+  <input type="text" name="search" value="{{search}}">
+  <input type="submit" value="検索" class="searchbtn">
+</form>
+
+<!-- <table>
+  <tr>
+    <th></th>
+  </tr>
+  {% for task in tasks %}
+  <tr>
+    <td>{{task.title}}</td>
+    <td><a href="{% url 'detail' task.pk %}">Detail</a></td>
+    <td><a href="{% url 'task-update' task.pk %}">Edit</a></td>
+    <td><a href="{% url 'task-delete' task.pk %}">Delete</a></td>
+  </tr>
+  {% endfor %}
+</table> -->
+
+<div class="tasksWrapper">
+  {% for task in tasks %}
+  <div class="taskWrapper">
+    <div class="taskTitle">
+      <a href="{% url 'detail' task.pk %}">{{task.title}}</a>
+    </div>
+    <div class="btns">
+      <a href="{% url 'task-update' task.pk %}" class="blk btn">編集</a>
+      <a href="{% url 'task-delete' task.pk %}" class="blk btn">削除</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+<div class="logout">
+  {% if request.user.is_authenticated %}
+<a href="{% url 'logout' %}" class="logbtn" style="margin-top: 48px;">ログアウト</a>
+{% else %}
+<a href="{% url 'login' %}">ログイン</a>
+{% endif %}
+</div>
+{% endblock content %}

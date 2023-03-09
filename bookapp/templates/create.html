@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="header">
+  <h1>本の追加</h1>
+</div>
+
+<a href="{% url 'list' %}" class="backbtn">戻る</a>
+
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="追加" class="btn" style="margin-top: 32px;">
+</form>
+{% endblock content %}

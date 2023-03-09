@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="header">
+  <h1>"{{ task.title }}"の削除</h1>
+</div>
+<a href="{% url 'list' %}" class="backbtn" style="margin-bottom: 32px;">戻る</a>
+<form method="post">{% csrf_token %}
+  <p>本当に "{{ task.title }}"を削除しますか?</p>
+  {{ form }}
+  <input type="submit" value="削除" class="btn" style="margin-top: 16px;">
+</form>
+{% endblock content %}
