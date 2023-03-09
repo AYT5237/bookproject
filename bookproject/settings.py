@@ -116,7 +116,8 @@ USE_TZ = True
 LOGIN_URL = 'login'
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = ['bookapp/static']
+# STATICFILES_DIRS = [BASE_DIR, 'static']
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
