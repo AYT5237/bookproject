@@ -110,11 +110,11 @@ h1, p {
 
 /* list */
 
-.tasksWrapper {
+.booksWrapper {
   margin-top: 20px;
 }
 
-.taskWrapper {
+.bookWrapper {
   display: flex;
   /* gap: 50px; */
   justify-content: space-between;
@@ -122,12 +122,12 @@ h1, p {
   border-top: 1px solid rgba(163, 163, 167, 0.5);
 }
 
-.taskTitle a {
+.bookTitle a {
   color: black;
   font-weight: 600;
 }
 
-.taskTitle a:hover {
+.bookTitle a:hover {
   color: rgb(100, 100, 100);
 }
 

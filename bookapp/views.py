@@ -9,36 +9,34 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
-from .models import Task
+from .models import BookModel
 
 # Create your views here.
-class TaskList(LoginRequiredMixin, ListView):
+class BookList(LoginRequiredMixin, ListView):
   template_name = 'list.html'
-  model = Task
-  context_object_name = 'tasks'
-  # デフォルトではobject_list
+  model = BookModel
+  context_object_name = 'books'
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
 
-    context['tasks'] = context['tasks'].filter(user=self.request.user)
+    context['books'] = context['books'].filter(user=self.request.user)
 
     searchInputText = self.request.GET.get('search') or ''
     if searchInputText:
-      context['tasks'] = context['tasks'].filter(title__startswith=searchInputText)
+      context['books'] = context['books'].filter(title__startswith=searchInputText)
 
     context['search'] = searchInputText
     return context
-    # get_context_dataはListViewがもともと持っている。それを上書き（オーバーライド）する
 
-class TaskDetail(LoginRequiredMixin, DetailView):
+class BookDetail(LoginRequiredMixin, DetailView):
   template_name = 'detail.html'
-  model = Task
-  context_object_name = 'task'
+  model = BookModel
+  context_object_name = 'book'
 
-class TaskCreate(LoginRequiredMixin, CreateView):
+class BookCreate(LoginRequiredMixin, CreateView):
   template_name = 'create.html'
-  model = Task
+  model = BookModel
   fields = ['title', 'description', 'bookimage', 'date']
   success_url = reverse_lazy('list')
 
@@ -46,18 +44,18 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-class TaskUpdate(LoginRequiredMixin, UpdateView):
+class BookUpdate(LoginRequiredMixin, UpdateView):
   template_name = 'update.html'
-  model = Task
+  model = BookModel
   fields = ['title', 'description', 'bookimage', 'date']
   success_url = reverse_lazy('list')
 
-class TaskDelete(LoginRequiredMixin, DeleteView):
+class BookDelete(LoginRequiredMixin, DeleteView):
   template_name = 'delete.html'
-  model = Task
+  model = BookModel
   fields = '__all__'
   success_url = reverse_lazy('list')
-  context_object_name = 'task'
+  context_object_name = 'book'
 
 class ListLogin(LoginView):
   template_name = 'login.html'

@@ -19,29 +19,15 @@
   <input type="submit" value="検索" class="searchbtn">
 </form>
 
-<!-- <table>
-  <tr>
-    <th></th>
-  </tr>
-  {% for task in tasks %}
-  <tr>
-    <td>{{task.title}}</td>
-    <td><a href="{% url 'detail' task.pk %}">Detail</a></td>
-    <td><a href="{% url 'task-update' task.pk %}">Edit</a></td>
-    <td><a href="{% url 'task-delete' task.pk %}">Delete</a></td>
-  </tr>
-  {% endfor %}
-</table> -->
-
-<div class="tasksWrapper">
-  {% for task in tasks %}
-  <div class="taskWrapper">
-    <div class="taskTitle">
-      <a href="{% url 'detail' task.pk %}">{{task.title}}</a>
+<div class="booksWrapper">
+  {% for book in books %}
+  <div class="bookWrapper">
+    <div class="bookTitle">
+      <a href="{% url 'detail' book.pk %}">{{book.title}}</a>
     </div>
     <div class="btns">
-      <a href="{% url 'task-update' task.pk %}" class="blk btn">編集</a>
-      <a href="{% url 'task-delete' task.pk %}" class="blk btn">削除</a>
+      <a href="{% url 'book-update' book.pk %}" class="blk btn">編集</a>
+      <a href="{% url 'book-delete' book.pk %}" class="blk btn">削除</a>
     </div>
   </div>
   {% endfor %}

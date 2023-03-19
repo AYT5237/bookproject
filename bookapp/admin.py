@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bookapp.models import Task
+from bookapp.models import BookModel
 
 # Register your models here.
-admin.site.register(Task)
+admin.site.register(BookModel)

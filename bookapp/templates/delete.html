@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="header">
-  <h1>"{{ task.title }}"の削除</h1>
+  <h1>"{{ book.title }}"の削除</h1>
 </div>
 <a href="{% url 'list' %}" class="backbtn" style="margin-bottom: 32px;">戻る</a>
 <form method="post">{% csrf_token %}
